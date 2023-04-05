@@ -1,0 +1,1568 @@
+Created by PLY (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    CONST
+    NUMBER
+
+Grammar
+
+Rule 0     S' -> prog
+Rule 1     prog -> PROGRAM ID PVIG decls cmdComp PONTO
+Rule 2     decls -> empty
+Rule 3     decls -> VAR listDecl
+Rule 4     listDecl -> declTip
+Rule 5     listDecl -> declTip listDecl
+Rule 6     declTip -> listId DPONTOS tip PVIG
+Rule 7     listId -> ID
+Rule 8     listId -> ID VIG listId
+Rule 9     tip -> INTEGER
+Rule 10    tip -> BOOLEAN
+Rule 11    tip -> CADEIA
+Rule 12    cmdComp -> BEGIN listCmd END
+Rule 13    listCmd -> cmd
+Rule 14    listCmd -> cmd PVIG listCmd
+Rule 15    cmd -> cmdIf
+Rule 16    cmd -> cmdWhile
+Rule 17    cmd -> cmdRead
+Rule 18    cmd -> cmdWrite
+Rule 19    cmd -> cmdAtrib
+Rule 20    cmd -> cmdComp
+Rule 21    cmdIf -> IF expr THEN cmd
+Rule 22    cmdIf -> IF expr THEN cmd ELSE cmd
+Rule 23    cmdWhile -> WHILE expr DO cmd
+Rule 24    cmdRead -> READ ABPAR listId FPAR
+Rule 25    cmdWrite -> WRITE ABPAR listW FPAR
+Rule 26    listW -> elemW
+Rule 27    listW -> elemW VIG listW
+Rule 28    elemW -> expr
+Rule 29    elemW -> CADEIA
+Rule 30    cmdAtrib -> ID ATRIB expr
+Rule 31    expr -> OPNEG ABPAR expr FPAR
+Rule 32    expr -> expr OPMULT expr
+Rule 33    expr -> expr OPDIV expr
+Rule 34    expr -> expr OPAD expr
+Rule 35    expr -> expr OPSUB expr
+Rule 36    expr -> expr OPREL expr
+Rule 37    expr -> OPNEG ID
+Rule 38    expr -> OPNEG TRUE
+Rule 39    expr -> OPNEG FALSE
+Rule 40    expr -> OPNEG OPNEG
+Rule 41    OPREL -> MENOR
+Rule 42    OPREL -> MAIOR
+Rule 43    OPREL -> MAIG
+Rule 44    OPREL -> MENIG
+Rule 45    OPREL -> IGUAL
+Rule 46    OPREL -> DIFER
+Rule 47    OPLOG -> AND
+Rule 48    OPLOG -> OR
+Rule 49    empty -> <empty>
+
+Terminals, with rules where they appear
+
+ABPAR                : 24 25 31
+AND                  : 47
+ATRIB                : 30
+BEGIN                : 12
+BOOLEAN              : 10
+CADEIA               : 11 29
+CONST                : 
+DIFER                : 46
+DO                   : 23
+DPONTOS              : 6
+ELSE                 : 22
+END                  : 12
+FALSE                : 39
+FPAR                 : 24 25 31
+ID                   : 1 7 8 30 37
+IF                   : 21 22
+IGUAL                : 45
+INTEGER              : 9
+MAIG                 : 43
+MAIOR                : 42
+MENIG                : 44
+MENOR                : 41
+NUMBER               : 
+OPAD                 : 34
+OPDIV                : 33
+OPMULT               : 32
+OPNEG                : 31 37 38 39 40 40
+OPSUB                : 35
+OR                   : 48
+PONTO                : 1
+PROGRAM              : 1
+PVIG                 : 1 6 14
+READ                 : 24
+THEN                 : 21 22
+TRUE                 : 38
+VAR                  : 3
+VIG                  : 8 27
+WHILE                : 23
+WRITE                : 25
+error                : 
+
+Nonterminals, with rules where they appear
+
+OPLOG                : 
+OPREL                : 36
+cmd                  : 13 14 21 22 22 23
+cmdAtrib             : 19
+cmdComp              : 1 20
+cmdIf                : 15
+cmdRead              : 17
+cmdWhile             : 16
+cmdWrite             : 18
+declTip              : 4 5
+decls                : 1
+elemW                : 26 27
+empty                : 2
+expr                 : 21 22 23 28 30 31 32 32 33 33 34 34 35 35 36 36
+listCmd              : 12 14
+listDecl             : 3 5
+listId               : 6 8 24
+listW                : 25 27
+prog                 : 0
+tip                  : 6
+
+
+state 0
+
+    (0) S' -> . prog
+    (1) prog -> . PROGRAM ID PVIG decls cmdComp PONTO
+
+    PROGRAM         shift and go to state 2
+
+    prog                           shift and go to state 1
+
+state 1
+
+    (0) S' -> prog .
+
+
+
+state 2
+
+    (1) prog -> PROGRAM . ID PVIG decls cmdComp PONTO
+
+    ID              shift and go to state 3
+
+
+state 3
+
+    (1) prog -> PROGRAM ID . PVIG decls cmdComp PONTO
+
+    PVIG            shift and go to state 4
+
+
+state 4
+
+    (1) prog -> PROGRAM ID PVIG . decls cmdComp PONTO
+    (2) decls -> . empty
+    (3) decls -> . VAR listDecl
+    (49) empty -> .
+
+    VAR             shift and go to state 7
+    BEGIN           reduce using rule 49 (empty -> .)
+
+    decls                          shift and go to state 5
+    empty                          shift and go to state 6
+
+state 5
+
+    (1) prog -> PROGRAM ID PVIG decls . cmdComp PONTO
+    (12) cmdComp -> . BEGIN listCmd END
+
+    BEGIN           shift and go to state 9
+
+    cmdComp                        shift and go to state 8
+
+state 6
+
+    (2) decls -> empty .
+
+    BEGIN           reduce using rule 2 (decls -> empty .)
+
+
+state 7
+
+    (3) decls -> VAR . listDecl
+    (4) listDecl -> . declTip
+    (5) listDecl -> . declTip listDecl
+    (6) declTip -> . listId DPONTOS tip PVIG
+    (7) listId -> . ID
+    (8) listId -> . ID VIG listId
+
+    ID              shift and go to state 13
+
+    listDecl                       shift and go to state 10
+    declTip                        shift and go to state 11
+    listId                         shift and go to state 12
+
+state 8
+
+    (1) prog -> PROGRAM ID PVIG decls cmdComp . PONTO
+
+    PONTO           shift and go to state 14
+
+
+state 9
+
+    (12) cmdComp -> BEGIN . listCmd END
+    (13) listCmd -> . cmd
+    (14) listCmd -> . cmd PVIG listCmd
+    (15) cmd -> . cmdIf
+    (16) cmd -> . cmdWhile
+    (17) cmd -> . cmdRead
+    (18) cmd -> . cmdWrite
+    (19) cmd -> . cmdAtrib
+    (20) cmd -> . cmdComp
+    (21) cmdIf -> . IF expr THEN cmd
+    (22) cmdIf -> . IF expr THEN cmd ELSE cmd
+    (23) cmdWhile -> . WHILE expr DO cmd
+    (24) cmdRead -> . READ ABPAR listId FPAR
+    (25) cmdWrite -> . WRITE ABPAR listW FPAR
+    (30) cmdAtrib -> . ID ATRIB expr
+    (12) cmdComp -> . BEGIN listCmd END
+
+    IF              shift and go to state 23
+    WHILE           shift and go to state 24
+    READ            shift and go to state 25
+    WRITE           shift and go to state 26
+    ID              shift and go to state 27
+    BEGIN           shift and go to state 9
+
+    listCmd                        shift and go to state 15
+    cmd                            shift and go to state 16
+    cmdIf                          shift and go to state 17
+    cmdWhile                       shift and go to state 18
+    cmdRead                        shift and go to state 19
+    cmdWrite                       shift and go to state 20
+    cmdAtrib                       shift and go to state 21
+    cmdComp                        shift and go to state 22
+
+state 10
+
+    (3) decls -> VAR listDecl .
+
+    BEGIN           reduce using rule 3 (decls -> VAR listDecl .)
+
+
+state 11
+
+    (4) listDecl -> declTip .
+    (5) listDecl -> declTip . listDecl
+    (4) listDecl -> . declTip
+    (5) listDecl -> . declTip listDecl
+    (6) declTip -> . listId DPONTOS tip PVIG
+    (7) listId -> . ID
+    (8) listId -> . ID VIG listId
+
+    BEGIN           reduce using rule 4 (listDecl -> declTip .)
+    ID              shift and go to state 13
+
+    declTip                        shift and go to state 11
+    listDecl                       shift and go to state 28
+    listId                         shift and go to state 12
+
+state 12
+
+    (6) declTip -> listId . DPONTOS tip PVIG
+
+    DPONTOS         shift and go to state 29
+
+
+state 13
+
+    (7) listId -> ID .
+    (8) listId -> ID . VIG listId
+
+    DPONTOS         reduce using rule 7 (listId -> ID .)
+    FPAR            reduce using rule 7 (listId -> ID .)
+    VIG             shift and go to state 30
+
+
+state 14
+
+    (1) prog -> PROGRAM ID PVIG decls cmdComp PONTO .
+
+    $end            reduce using rule 1 (prog -> PROGRAM ID PVIG decls cmdComp PONTO .)
+
+
+state 15
+
+    (12) cmdComp -> BEGIN listCmd . END
+
+    END             shift and go to state 31
+
+
+state 16
+
+    (13) listCmd -> cmd .
+    (14) listCmd -> cmd . PVIG listCmd
+
+    END             reduce using rule 13 (listCmd -> cmd .)
+    PVIG            shift and go to state 32
+
+
+state 17
+
+    (15) cmd -> cmdIf .
+
+    PVIG            reduce using rule 15 (cmd -> cmdIf .)
+    END             reduce using rule 15 (cmd -> cmdIf .)
+    ELSE            reduce using rule 15 (cmd -> cmdIf .)
+
+
+state 18
+
+    (16) cmd -> cmdWhile .
+
+    PVIG            reduce using rule 16 (cmd -> cmdWhile .)
+    END             reduce using rule 16 (cmd -> cmdWhile .)
+    ELSE            reduce using rule 16 (cmd -> cmdWhile .)
+
+
+state 19
+
+    (17) cmd -> cmdRead .
+
+    PVIG            reduce using rule 17 (cmd -> cmdRead .)
+    END             reduce using rule 17 (cmd -> cmdRead .)
+    ELSE            reduce using rule 17 (cmd -> cmdRead .)
+
+
+state 20
+
+    (18) cmd -> cmdWrite .
+
+    PVIG            reduce using rule 18 (cmd -> cmdWrite .)
+    END             reduce using rule 18 (cmd -> cmdWrite .)
+    ELSE            reduce using rule 18 (cmd -> cmdWrite .)
+
+
+state 21
+
+    (19) cmd -> cmdAtrib .
+
+    PVIG            reduce using rule 19 (cmd -> cmdAtrib .)
+    END             reduce using rule 19 (cmd -> cmdAtrib .)
+    ELSE            reduce using rule 19 (cmd -> cmdAtrib .)
+
+
+state 22
+
+    (20) cmd -> cmdComp .
+
+    PVIG            reduce using rule 20 (cmd -> cmdComp .)
+    END             reduce using rule 20 (cmd -> cmdComp .)
+    ELSE            reduce using rule 20 (cmd -> cmdComp .)
+
+
+state 23
+
+    (21) cmdIf -> IF . expr THEN cmd
+    (22) cmdIf -> IF . expr THEN cmd ELSE cmd
+    (31) expr -> . OPNEG ABPAR expr FPAR
+    (32) expr -> . expr OPMULT expr
+    (33) expr -> . expr OPDIV expr
+    (34) expr -> . expr OPAD expr
+    (35) expr -> . expr OPSUB expr
+    (36) expr -> . expr OPREL expr
+    (37) expr -> . OPNEG ID
+    (38) expr -> . OPNEG TRUE
+    (39) expr -> . OPNEG FALSE
+    (40) expr -> . OPNEG OPNEG
+
+    OPNEG           shift and go to state 34
+
+    expr                           shift and go to state 33
+
+state 24
+
+    (23) cmdWhile -> WHILE . expr DO cmd
+    (31) expr -> . OPNEG ABPAR expr FPAR
+    (32) expr -> . expr OPMULT expr
+    (33) expr -> . expr OPDIV expr
+    (34) expr -> . expr OPAD expr
+    (35) expr -> . expr OPSUB expr
+    (36) expr -> . expr OPREL expr
+    (37) expr -> . OPNEG ID
+    (38) expr -> . OPNEG TRUE
+    (39) expr -> . OPNEG FALSE
+    (40) expr -> . OPNEG OPNEG
+
+    OPNEG           shift and go to state 34
+
+    expr                           shift and go to state 35
+
+state 25
+
+    (24) cmdRead -> READ . ABPAR listId FPAR
+
+    ABPAR           shift and go to state 36
+
+
+state 26
+
+    (25) cmdWrite -> WRITE . ABPAR listW FPAR
+
+    ABPAR           shift and go to state 37
+
+
+state 27
+
+    (30) cmdAtrib -> ID . ATRIB expr
+
+    ATRIB           shift and go to state 38
+
+
+state 28
+
+    (5) listDecl -> declTip listDecl .
+
+    BEGIN           reduce using rule 5 (listDecl -> declTip listDecl .)
+
+
+state 29
+
+    (6) declTip -> listId DPONTOS . tip PVIG
+    (9) tip -> . INTEGER
+    (10) tip -> . BOOLEAN
+    (11) tip -> . CADEIA
+
+    INTEGER         shift and go to state 40
+    BOOLEAN         shift and go to state 41
+    CADEIA          shift and go to state 42
+
+    tip                            shift and go to state 39
+
+state 30
+
+    (8) listId -> ID VIG . listId
+    (7) listId -> . ID
+    (8) listId -> . ID VIG listId
+
+    ID              shift and go to state 13
+
+    listId                         shift and go to state 43
+
+state 31
+
+    (12) cmdComp -> BEGIN listCmd END .
+
+    PONTO           reduce using rule 12 (cmdComp -> BEGIN listCmd END .)
+    PVIG            reduce using rule 12 (cmdComp -> BEGIN listCmd END .)
+    END             reduce using rule 12 (cmdComp -> BEGIN listCmd END .)
+    ELSE            reduce using rule 12 (cmdComp -> BEGIN listCmd END .)
+
+
+state 32
+
+    (14) listCmd -> cmd PVIG . listCmd
+    (13) listCmd -> . cmd
+    (14) listCmd -> . cmd PVIG listCmd
+    (15) cmd -> . cmdIf
+    (16) cmd -> . cmdWhile
+    (17) cmd -> . cmdRead
+    (18) cmd -> . cmdWrite
+    (19) cmd -> . cmdAtrib
+    (20) cmd -> . cmdComp
+    (21) cmdIf -> . IF expr THEN cmd
+    (22) cmdIf -> . IF expr THEN cmd ELSE cmd
+    (23) cmdWhile -> . WHILE expr DO cmd
+    (24) cmdRead -> . READ ABPAR listId FPAR
+    (25) cmdWrite -> . WRITE ABPAR listW FPAR
+    (30) cmdAtrib -> . ID ATRIB expr
+    (12) cmdComp -> . BEGIN listCmd END
+
+    IF              shift and go to state 23
+    WHILE           shift and go to state 24
+    READ            shift and go to state 25
+    WRITE           shift and go to state 26
+    ID              shift and go to state 27
+    BEGIN           shift and go to state 9
+
+    cmd                            shift and go to state 16
+    listCmd                        shift and go to state 44
+    cmdIf                          shift and go to state 17
+    cmdWhile                       shift and go to state 18
+    cmdRead                        shift and go to state 19
+    cmdWrite                       shift and go to state 20
+    cmdAtrib                       shift and go to state 21
+    cmdComp                        shift and go to state 22
+
+state 33
+
+    (21) cmdIf -> IF expr . THEN cmd
+    (22) cmdIf -> IF expr . THEN cmd ELSE cmd
+    (32) expr -> expr . OPMULT expr
+    (33) expr -> expr . OPDIV expr
+    (34) expr -> expr . OPAD expr
+    (35) expr -> expr . OPSUB expr
+    (36) expr -> expr . OPREL expr
+    (41) OPREL -> . MENOR
+    (42) OPREL -> . MAIOR
+    (43) OPREL -> . MAIG
+    (44) OPREL -> . MENIG
+    (45) OPREL -> . IGUAL
+    (46) OPREL -> . DIFER
+
+    THEN            shift and go to state 45
+    OPMULT          shift and go to state 46
+    OPDIV           shift and go to state 47
+    OPAD            shift and go to state 48
+    OPSUB           shift and go to state 49
+    MENOR           shift and go to state 51
+    MAIOR           shift and go to state 52
+    MAIG            shift and go to state 53
+    MENIG           shift and go to state 54
+    IGUAL           shift and go to state 55
+    DIFER           shift and go to state 56
+
+    OPREL                          shift and go to state 50
+
+state 34
+
+    (31) expr -> OPNEG . ABPAR expr FPAR
+    (37) expr -> OPNEG . ID
+    (38) expr -> OPNEG . TRUE
+    (39) expr -> OPNEG . FALSE
+    (40) expr -> OPNEG . OPNEG
+
+    ABPAR           shift and go to state 58
+    ID              shift and go to state 59
+    TRUE            shift and go to state 60
+    FALSE           shift and go to state 61
+    OPNEG           shift and go to state 57
+
+
+state 35
+
+    (23) cmdWhile -> WHILE expr . DO cmd
+    (32) expr -> expr . OPMULT expr
+    (33) expr -> expr . OPDIV expr
+    (34) expr -> expr . OPAD expr
+    (35) expr -> expr . OPSUB expr
+    (36) expr -> expr . OPREL expr
+    (41) OPREL -> . MENOR
+    (42) OPREL -> . MAIOR
+    (43) OPREL -> . MAIG
+    (44) OPREL -> . MENIG
+    (45) OPREL -> . IGUAL
+    (46) OPREL -> . DIFER
+
+    DO              shift and go to state 62
+    OPMULT          shift and go to state 46
+    OPDIV           shift and go to state 47
+    OPAD            shift and go to state 48
+    OPSUB           shift and go to state 49
+    MENOR           shift and go to state 51
+    MAIOR           shift and go to state 52
+    MAIG            shift and go to state 53
+    MENIG           shift and go to state 54
+    IGUAL           shift and go to state 55
+    DIFER           shift and go to state 56
+
+    OPREL                          shift and go to state 50
+
+state 36
+
+    (24) cmdRead -> READ ABPAR . listId FPAR
+    (7) listId -> . ID
+    (8) listId -> . ID VIG listId
+
+    ID              shift and go to state 13
+
+    listId                         shift and go to state 63
+
+state 37
+
+    (25) cmdWrite -> WRITE ABPAR . listW FPAR
+    (26) listW -> . elemW
+    (27) listW -> . elemW VIG listW
+    (28) elemW -> . expr
+    (29) elemW -> . CADEIA
+    (31) expr -> . OPNEG ABPAR expr FPAR
+    (32) expr -> . expr OPMULT expr
+    (33) expr -> . expr OPDIV expr
+    (34) expr -> . expr OPAD expr
+    (35) expr -> . expr OPSUB expr
+    (36) expr -> . expr OPREL expr
+    (37) expr -> . OPNEG ID
+    (38) expr -> . OPNEG TRUE
+    (39) expr -> . OPNEG FALSE
+    (40) expr -> . OPNEG OPNEG
+
+    CADEIA          shift and go to state 67
+    OPNEG           shift and go to state 34
+
+    listW                          shift and go to state 64
+    elemW                          shift and go to state 65
+    expr                           shift and go to state 66
+
+state 38
+
+    (30) cmdAtrib -> ID ATRIB . expr
+    (31) expr -> . OPNEG ABPAR expr FPAR
+    (32) expr -> . expr OPMULT expr
+    (33) expr -> . expr OPDIV expr
+    (34) expr -> . expr OPAD expr
+    (35) expr -> . expr OPSUB expr
+    (36) expr -> . expr OPREL expr
+    (37) expr -> . OPNEG ID
+    (38) expr -> . OPNEG TRUE
+    (39) expr -> . OPNEG FALSE
+    (40) expr -> . OPNEG OPNEG
+
+    OPNEG           shift and go to state 34
+
+    expr                           shift and go to state 68
+
+state 39
+
+    (6) declTip -> listId DPONTOS tip . PVIG
+
+    PVIG            shift and go to state 69
+
+
+state 40
+
+    (9) tip -> INTEGER .
+
+    PVIG            reduce using rule 9 (tip -> INTEGER .)
+
+
+state 41
+
+    (10) tip -> BOOLEAN .
+
+    PVIG            reduce using rule 10 (tip -> BOOLEAN .)
+
+
+state 42
+
+    (11) tip -> CADEIA .
+
+    PVIG            reduce using rule 11 (tip -> CADEIA .)
+
+
+state 43
+
+    (8) listId -> ID VIG listId .
+
+    DPONTOS         reduce using rule 8 (listId -> ID VIG listId .)
+    FPAR            reduce using rule 8 (listId -> ID VIG listId .)
+
+
+state 44
+
+    (14) listCmd -> cmd PVIG listCmd .
+
+    END             reduce using rule 14 (listCmd -> cmd PVIG listCmd .)
+
+
+state 45
+
+    (21) cmdIf -> IF expr THEN . cmd
+    (22) cmdIf -> IF expr THEN . cmd ELSE cmd
+    (15) cmd -> . cmdIf
+    (16) cmd -> . cmdWhile
+    (17) cmd -> . cmdRead
+    (18) cmd -> . cmdWrite
+    (19) cmd -> . cmdAtrib
+    (20) cmd -> . cmdComp
+    (21) cmdIf -> . IF expr THEN cmd
+    (22) cmdIf -> . IF expr THEN cmd ELSE cmd
+    (23) cmdWhile -> . WHILE expr DO cmd
+    (24) cmdRead -> . READ ABPAR listId FPAR
+    (25) cmdWrite -> . WRITE ABPAR listW FPAR
+    (30) cmdAtrib -> . ID ATRIB expr
+    (12) cmdComp -> . BEGIN listCmd END
+
+    IF              shift and go to state 23
+    WHILE           shift and go to state 24
+    READ            shift and go to state 25
+    WRITE           shift and go to state 26
+    ID              shift and go to state 27
+    BEGIN           shift and go to state 9
+
+    cmd                            shift and go to state 70
+    cmdIf                          shift and go to state 17
+    cmdWhile                       shift and go to state 18
+    cmdRead                        shift and go to state 19
+    cmdWrite                       shift and go to state 20
+    cmdAtrib                       shift and go to state 21
+    cmdComp                        shift and go to state 22
+
+state 46
+
+    (32) expr -> expr OPMULT . expr
+    (31) expr -> . OPNEG ABPAR expr FPAR
+    (32) expr -> . expr OPMULT expr
+    (33) expr -> . expr OPDIV expr
+    (34) expr -> . expr OPAD expr
+    (35) expr -> . expr OPSUB expr
+    (36) expr -> . expr OPREL expr
+    (37) expr -> . OPNEG ID
+    (38) expr -> . OPNEG TRUE
+    (39) expr -> . OPNEG FALSE
+    (40) expr -> . OPNEG OPNEG
+
+    OPNEG           shift and go to state 34
+
+    expr                           shift and go to state 71
+
+state 47
+
+    (33) expr -> expr OPDIV . expr
+    (31) expr -> . OPNEG ABPAR expr FPAR
+    (32) expr -> . expr OPMULT expr
+    (33) expr -> . expr OPDIV expr
+    (34) expr -> . expr OPAD expr
+    (35) expr -> . expr OPSUB expr
+    (36) expr -> . expr OPREL expr
+    (37) expr -> . OPNEG ID
+    (38) expr -> . OPNEG TRUE
+    (39) expr -> . OPNEG FALSE
+    (40) expr -> . OPNEG OPNEG
+
+    OPNEG           shift and go to state 34
+
+    expr                           shift and go to state 72
+
+state 48
+
+    (34) expr -> expr OPAD . expr
+    (31) expr -> . OPNEG ABPAR expr FPAR
+    (32) expr -> . expr OPMULT expr
+    (33) expr -> . expr OPDIV expr
+    (34) expr -> . expr OPAD expr
+    (35) expr -> . expr OPSUB expr
+    (36) expr -> . expr OPREL expr
+    (37) expr -> . OPNEG ID
+    (38) expr -> . OPNEG TRUE
+    (39) expr -> . OPNEG FALSE
+    (40) expr -> . OPNEG OPNEG
+
+    OPNEG           shift and go to state 34
+
+    expr                           shift and go to state 73
+
+state 49
+
+    (35) expr -> expr OPSUB . expr
+    (31) expr -> . OPNEG ABPAR expr FPAR
+    (32) expr -> . expr OPMULT expr
+    (33) expr -> . expr OPDIV expr
+    (34) expr -> . expr OPAD expr
+    (35) expr -> . expr OPSUB expr
+    (36) expr -> . expr OPREL expr
+    (37) expr -> . OPNEG ID
+    (38) expr -> . OPNEG TRUE
+    (39) expr -> . OPNEG FALSE
+    (40) expr -> . OPNEG OPNEG
+
+    OPNEG           shift and go to state 34
+
+    expr                           shift and go to state 74
+
+state 50
+
+    (36) expr -> expr OPREL . expr
+    (31) expr -> . OPNEG ABPAR expr FPAR
+    (32) expr -> . expr OPMULT expr
+    (33) expr -> . expr OPDIV expr
+    (34) expr -> . expr OPAD expr
+    (35) expr -> . expr OPSUB expr
+    (36) expr -> . expr OPREL expr
+    (37) expr -> . OPNEG ID
+    (38) expr -> . OPNEG TRUE
+    (39) expr -> . OPNEG FALSE
+    (40) expr -> . OPNEG OPNEG
+
+    OPNEG           shift and go to state 34
+
+    expr                           shift and go to state 75
+
+state 51
+
+    (41) OPREL -> MENOR .
+
+    OPNEG           reduce using rule 41 (OPREL -> MENOR .)
+
+
+state 52
+
+    (42) OPREL -> MAIOR .
+
+    OPNEG           reduce using rule 42 (OPREL -> MAIOR .)
+
+
+state 53
+
+    (43) OPREL -> MAIG .
+
+    OPNEG           reduce using rule 43 (OPREL -> MAIG .)
+
+
+state 54
+
+    (44) OPREL -> MENIG .
+
+    OPNEG           reduce using rule 44 (OPREL -> MENIG .)
+
+
+state 55
+
+    (45) OPREL -> IGUAL .
+
+    OPNEG           reduce using rule 45 (OPREL -> IGUAL .)
+
+
+state 56
+
+    (46) OPREL -> DIFER .
+
+    OPNEG           reduce using rule 46 (OPREL -> DIFER .)
+
+
+state 57
+
+    (40) expr -> OPNEG OPNEG .
+
+    THEN            reduce using rule 40 (expr -> OPNEG OPNEG .)
+    OPMULT          reduce using rule 40 (expr -> OPNEG OPNEG .)
+    OPDIV           reduce using rule 40 (expr -> OPNEG OPNEG .)
+    OPAD            reduce using rule 40 (expr -> OPNEG OPNEG .)
+    OPSUB           reduce using rule 40 (expr -> OPNEG OPNEG .)
+    MENOR           reduce using rule 40 (expr -> OPNEG OPNEG .)
+    MAIOR           reduce using rule 40 (expr -> OPNEG OPNEG .)
+    MAIG            reduce using rule 40 (expr -> OPNEG OPNEG .)
+    MENIG           reduce using rule 40 (expr -> OPNEG OPNEG .)
+    IGUAL           reduce using rule 40 (expr -> OPNEG OPNEG .)
+    DIFER           reduce using rule 40 (expr -> OPNEG OPNEG .)
+    DO              reduce using rule 40 (expr -> OPNEG OPNEG .)
+    VIG             reduce using rule 40 (expr -> OPNEG OPNEG .)
+    FPAR            reduce using rule 40 (expr -> OPNEG OPNEG .)
+    PVIG            reduce using rule 40 (expr -> OPNEG OPNEG .)
+    END             reduce using rule 40 (expr -> OPNEG OPNEG .)
+    ELSE            reduce using rule 40 (expr -> OPNEG OPNEG .)
+
+
+state 58
+
+    (31) expr -> OPNEG ABPAR . expr FPAR
+    (31) expr -> . OPNEG ABPAR expr FPAR
+    (32) expr -> . expr OPMULT expr
+    (33) expr -> . expr OPDIV expr
+    (34) expr -> . expr OPAD expr
+    (35) expr -> . expr OPSUB expr
+    (36) expr -> . expr OPREL expr
+    (37) expr -> . OPNEG ID
+    (38) expr -> . OPNEG TRUE
+    (39) expr -> . OPNEG FALSE
+    (40) expr -> . OPNEG OPNEG
+
+    OPNEG           shift and go to state 34
+
+    expr                           shift and go to state 76
+
+state 59
+
+    (37) expr -> OPNEG ID .
+
+    THEN            reduce using rule 37 (expr -> OPNEG ID .)
+    OPMULT          reduce using rule 37 (expr -> OPNEG ID .)
+    OPDIV           reduce using rule 37 (expr -> OPNEG ID .)
+    OPAD            reduce using rule 37 (expr -> OPNEG ID .)
+    OPSUB           reduce using rule 37 (expr -> OPNEG ID .)
+    MENOR           reduce using rule 37 (expr -> OPNEG ID .)
+    MAIOR           reduce using rule 37 (expr -> OPNEG ID .)
+    MAIG            reduce using rule 37 (expr -> OPNEG ID .)
+    MENIG           reduce using rule 37 (expr -> OPNEG ID .)
+    IGUAL           reduce using rule 37 (expr -> OPNEG ID .)
+    DIFER           reduce using rule 37 (expr -> OPNEG ID .)
+    DO              reduce using rule 37 (expr -> OPNEG ID .)
+    VIG             reduce using rule 37 (expr -> OPNEG ID .)
+    FPAR            reduce using rule 37 (expr -> OPNEG ID .)
+    PVIG            reduce using rule 37 (expr -> OPNEG ID .)
+    END             reduce using rule 37 (expr -> OPNEG ID .)
+    ELSE            reduce using rule 37 (expr -> OPNEG ID .)
+
+
+state 60
+
+    (38) expr -> OPNEG TRUE .
+
+    THEN            reduce using rule 38 (expr -> OPNEG TRUE .)
+    OPMULT          reduce using rule 38 (expr -> OPNEG TRUE .)
+    OPDIV           reduce using rule 38 (expr -> OPNEG TRUE .)
+    OPAD            reduce using rule 38 (expr -> OPNEG TRUE .)
+    OPSUB           reduce using rule 38 (expr -> OPNEG TRUE .)
+    MENOR           reduce using rule 38 (expr -> OPNEG TRUE .)
+    MAIOR           reduce using rule 38 (expr -> OPNEG TRUE .)
+    MAIG            reduce using rule 38 (expr -> OPNEG TRUE .)
+    MENIG           reduce using rule 38 (expr -> OPNEG TRUE .)
+    IGUAL           reduce using rule 38 (expr -> OPNEG TRUE .)
+    DIFER           reduce using rule 38 (expr -> OPNEG TRUE .)
+    DO              reduce using rule 38 (expr -> OPNEG TRUE .)
+    VIG             reduce using rule 38 (expr -> OPNEG TRUE .)
+    FPAR            reduce using rule 38 (expr -> OPNEG TRUE .)
+    PVIG            reduce using rule 38 (expr -> OPNEG TRUE .)
+    END             reduce using rule 38 (expr -> OPNEG TRUE .)
+    ELSE            reduce using rule 38 (expr -> OPNEG TRUE .)
+
+
+state 61
+
+    (39) expr -> OPNEG FALSE .
+
+    THEN            reduce using rule 39 (expr -> OPNEG FALSE .)
+    OPMULT          reduce using rule 39 (expr -> OPNEG FALSE .)
+    OPDIV           reduce using rule 39 (expr -> OPNEG FALSE .)
+    OPAD            reduce using rule 39 (expr -> OPNEG FALSE .)
+    OPSUB           reduce using rule 39 (expr -> OPNEG FALSE .)
+    MENOR           reduce using rule 39 (expr -> OPNEG FALSE .)
+    MAIOR           reduce using rule 39 (expr -> OPNEG FALSE .)
+    MAIG            reduce using rule 39 (expr -> OPNEG FALSE .)
+    MENIG           reduce using rule 39 (expr -> OPNEG FALSE .)
+    IGUAL           reduce using rule 39 (expr -> OPNEG FALSE .)
+    DIFER           reduce using rule 39 (expr -> OPNEG FALSE .)
+    DO              reduce using rule 39 (expr -> OPNEG FALSE .)
+    VIG             reduce using rule 39 (expr -> OPNEG FALSE .)
+    FPAR            reduce using rule 39 (expr -> OPNEG FALSE .)
+    PVIG            reduce using rule 39 (expr -> OPNEG FALSE .)
+    END             reduce using rule 39 (expr -> OPNEG FALSE .)
+    ELSE            reduce using rule 39 (expr -> OPNEG FALSE .)
+
+
+state 62
+
+    (23) cmdWhile -> WHILE expr DO . cmd
+    (15) cmd -> . cmdIf
+    (16) cmd -> . cmdWhile
+    (17) cmd -> . cmdRead
+    (18) cmd -> . cmdWrite
+    (19) cmd -> . cmdAtrib
+    (20) cmd -> . cmdComp
+    (21) cmdIf -> . IF expr THEN cmd
+    (22) cmdIf -> . IF expr THEN cmd ELSE cmd
+    (23) cmdWhile -> . WHILE expr DO cmd
+    (24) cmdRead -> . READ ABPAR listId FPAR
+    (25) cmdWrite -> . WRITE ABPAR listW FPAR
+    (30) cmdAtrib -> . ID ATRIB expr
+    (12) cmdComp -> . BEGIN listCmd END
+
+    IF              shift and go to state 23
+    WHILE           shift and go to state 24
+    READ            shift and go to state 25
+    WRITE           shift and go to state 26
+    ID              shift and go to state 27
+    BEGIN           shift and go to state 9
+
+    cmd                            shift and go to state 77
+    cmdIf                          shift and go to state 17
+    cmdWhile                       shift and go to state 18
+    cmdRead                        shift and go to state 19
+    cmdWrite                       shift and go to state 20
+    cmdAtrib                       shift and go to state 21
+    cmdComp                        shift and go to state 22
+
+state 63
+
+    (24) cmdRead -> READ ABPAR listId . FPAR
+
+    FPAR            shift and go to state 78
+
+
+state 64
+
+    (25) cmdWrite -> WRITE ABPAR listW . FPAR
+
+    FPAR            shift and go to state 79
+
+
+state 65
+
+    (26) listW -> elemW .
+    (27) listW -> elemW . VIG listW
+
+    FPAR            reduce using rule 26 (listW -> elemW .)
+    VIG             shift and go to state 80
+
+
+state 66
+
+    (28) elemW -> expr .
+    (32) expr -> expr . OPMULT expr
+    (33) expr -> expr . OPDIV expr
+    (34) expr -> expr . OPAD expr
+    (35) expr -> expr . OPSUB expr
+    (36) expr -> expr . OPREL expr
+    (41) OPREL -> . MENOR
+    (42) OPREL -> . MAIOR
+    (43) OPREL -> . MAIG
+    (44) OPREL -> . MENIG
+    (45) OPREL -> . IGUAL
+    (46) OPREL -> . DIFER
+
+    VIG             reduce using rule 28 (elemW -> expr .)
+    FPAR            reduce using rule 28 (elemW -> expr .)
+    OPMULT          shift and go to state 46
+    OPDIV           shift and go to state 47
+    OPAD            shift and go to state 48
+    OPSUB           shift and go to state 49
+    MENOR           shift and go to state 51
+    MAIOR           shift and go to state 52
+    MAIG            shift and go to state 53
+    MENIG           shift and go to state 54
+    IGUAL           shift and go to state 55
+    DIFER           shift and go to state 56
+
+    OPREL                          shift and go to state 50
+
+state 67
+
+    (29) elemW -> CADEIA .
+
+    VIG             reduce using rule 29 (elemW -> CADEIA .)
+    FPAR            reduce using rule 29 (elemW -> CADEIA .)
+
+
+state 68
+
+    (30) cmdAtrib -> ID ATRIB expr .
+    (32) expr -> expr . OPMULT expr
+    (33) expr -> expr . OPDIV expr
+    (34) expr -> expr . OPAD expr
+    (35) expr -> expr . OPSUB expr
+    (36) expr -> expr . OPREL expr
+    (41) OPREL -> . MENOR
+    (42) OPREL -> . MAIOR
+    (43) OPREL -> . MAIG
+    (44) OPREL -> . MENIG
+    (45) OPREL -> . IGUAL
+    (46) OPREL -> . DIFER
+
+    PVIG            reduce using rule 30 (cmdAtrib -> ID ATRIB expr .)
+    END             reduce using rule 30 (cmdAtrib -> ID ATRIB expr .)
+    ELSE            reduce using rule 30 (cmdAtrib -> ID ATRIB expr .)
+    OPMULT          shift and go to state 46
+    OPDIV           shift and go to state 47
+    OPAD            shift and go to state 48
+    OPSUB           shift and go to state 49
+    MENOR           shift and go to state 51
+    MAIOR           shift and go to state 52
+    MAIG            shift and go to state 53
+    MENIG           shift and go to state 54
+    IGUAL           shift and go to state 55
+    DIFER           shift and go to state 56
+
+    OPREL                          shift and go to state 50
+
+state 69
+
+    (6) declTip -> listId DPONTOS tip PVIG .
+
+    ID              reduce using rule 6 (declTip -> listId DPONTOS tip PVIG .)
+    BEGIN           reduce using rule 6 (declTip -> listId DPONTOS tip PVIG .)
+
+
+state 70
+
+    (21) cmdIf -> IF expr THEN cmd .
+    (22) cmdIf -> IF expr THEN cmd . ELSE cmd
+
+  ! shift/reduce conflict for ELSE resolved as shift
+    PVIG            reduce using rule 21 (cmdIf -> IF expr THEN cmd .)
+    END             reduce using rule 21 (cmdIf -> IF expr THEN cmd .)
+    ELSE            shift and go to state 81
+
+  ! ELSE            [ reduce using rule 21 (cmdIf -> IF expr THEN cmd .) ]
+
+
+state 71
+
+    (32) expr -> expr OPMULT expr .
+    (32) expr -> expr . OPMULT expr
+    (33) expr -> expr . OPDIV expr
+    (34) expr -> expr . OPAD expr
+    (35) expr -> expr . OPSUB expr
+    (36) expr -> expr . OPREL expr
+    (41) OPREL -> . MENOR
+    (42) OPREL -> . MAIOR
+    (43) OPREL -> . MAIG
+    (44) OPREL -> . MENIG
+    (45) OPREL -> . IGUAL
+    (46) OPREL -> . DIFER
+
+  ! shift/reduce conflict for OPMULT resolved as shift
+  ! shift/reduce conflict for OPDIV resolved as shift
+  ! shift/reduce conflict for OPAD resolved as shift
+  ! shift/reduce conflict for OPSUB resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MAIOR resolved as shift
+  ! shift/reduce conflict for MAIG resolved as shift
+  ! shift/reduce conflict for MENIG resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DIFER resolved as shift
+    THEN            reduce using rule 32 (expr -> expr OPMULT expr .)
+    DO              reduce using rule 32 (expr -> expr OPMULT expr .)
+    VIG             reduce using rule 32 (expr -> expr OPMULT expr .)
+    FPAR            reduce using rule 32 (expr -> expr OPMULT expr .)
+    PVIG            reduce using rule 32 (expr -> expr OPMULT expr .)
+    END             reduce using rule 32 (expr -> expr OPMULT expr .)
+    ELSE            reduce using rule 32 (expr -> expr OPMULT expr .)
+    OPMULT          shift and go to state 46
+    OPDIV           shift and go to state 47
+    OPAD            shift and go to state 48
+    OPSUB           shift and go to state 49
+    MENOR           shift and go to state 51
+    MAIOR           shift and go to state 52
+    MAIG            shift and go to state 53
+    MENIG           shift and go to state 54
+    IGUAL           shift and go to state 55
+    DIFER           shift and go to state 56
+
+  ! OPMULT          [ reduce using rule 32 (expr -> expr OPMULT expr .) ]
+  ! OPDIV           [ reduce using rule 32 (expr -> expr OPMULT expr .) ]
+  ! OPAD            [ reduce using rule 32 (expr -> expr OPMULT expr .) ]
+  ! OPSUB           [ reduce using rule 32 (expr -> expr OPMULT expr .) ]
+  ! MENOR           [ reduce using rule 32 (expr -> expr OPMULT expr .) ]
+  ! MAIOR           [ reduce using rule 32 (expr -> expr OPMULT expr .) ]
+  ! MAIG            [ reduce using rule 32 (expr -> expr OPMULT expr .) ]
+  ! MENIG           [ reduce using rule 32 (expr -> expr OPMULT expr .) ]
+  ! IGUAL           [ reduce using rule 32 (expr -> expr OPMULT expr .) ]
+  ! DIFER           [ reduce using rule 32 (expr -> expr OPMULT expr .) ]
+
+    OPREL                          shift and go to state 50
+
+state 72
+
+    (33) expr -> expr OPDIV expr .
+    (32) expr -> expr . OPMULT expr
+    (33) expr -> expr . OPDIV expr
+    (34) expr -> expr . OPAD expr
+    (35) expr -> expr . OPSUB expr
+    (36) expr -> expr . OPREL expr
+    (41) OPREL -> . MENOR
+    (42) OPREL -> . MAIOR
+    (43) OPREL -> . MAIG
+    (44) OPREL -> . MENIG
+    (45) OPREL -> . IGUAL
+    (46) OPREL -> . DIFER
+
+  ! shift/reduce conflict for OPMULT resolved as shift
+  ! shift/reduce conflict for OPDIV resolved as shift
+  ! shift/reduce conflict for OPAD resolved as shift
+  ! shift/reduce conflict for OPSUB resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MAIOR resolved as shift
+  ! shift/reduce conflict for MAIG resolved as shift
+  ! shift/reduce conflict for MENIG resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DIFER resolved as shift
+    THEN            reduce using rule 33 (expr -> expr OPDIV expr .)
+    DO              reduce using rule 33 (expr -> expr OPDIV expr .)
+    VIG             reduce using rule 33 (expr -> expr OPDIV expr .)
+    FPAR            reduce using rule 33 (expr -> expr OPDIV expr .)
+    PVIG            reduce using rule 33 (expr -> expr OPDIV expr .)
+    END             reduce using rule 33 (expr -> expr OPDIV expr .)
+    ELSE            reduce using rule 33 (expr -> expr OPDIV expr .)
+    OPMULT          shift and go to state 46
+    OPDIV           shift and go to state 47
+    OPAD            shift and go to state 48
+    OPSUB           shift and go to state 49
+    MENOR           shift and go to state 51
+    MAIOR           shift and go to state 52
+    MAIG            shift and go to state 53
+    MENIG           shift and go to state 54
+    IGUAL           shift and go to state 55
+    DIFER           shift and go to state 56
+
+  ! OPMULT          [ reduce using rule 33 (expr -> expr OPDIV expr .) ]
+  ! OPDIV           [ reduce using rule 33 (expr -> expr OPDIV expr .) ]
+  ! OPAD            [ reduce using rule 33 (expr -> expr OPDIV expr .) ]
+  ! OPSUB           [ reduce using rule 33 (expr -> expr OPDIV expr .) ]
+  ! MENOR           [ reduce using rule 33 (expr -> expr OPDIV expr .) ]
+  ! MAIOR           [ reduce using rule 33 (expr -> expr OPDIV expr .) ]
+  ! MAIG            [ reduce using rule 33 (expr -> expr OPDIV expr .) ]
+  ! MENIG           [ reduce using rule 33 (expr -> expr OPDIV expr .) ]
+  ! IGUAL           [ reduce using rule 33 (expr -> expr OPDIV expr .) ]
+  ! DIFER           [ reduce using rule 33 (expr -> expr OPDIV expr .) ]
+
+    OPREL                          shift and go to state 50
+
+state 73
+
+    (34) expr -> expr OPAD expr .
+    (32) expr -> expr . OPMULT expr
+    (33) expr -> expr . OPDIV expr
+    (34) expr -> expr . OPAD expr
+    (35) expr -> expr . OPSUB expr
+    (36) expr -> expr . OPREL expr
+    (41) OPREL -> . MENOR
+    (42) OPREL -> . MAIOR
+    (43) OPREL -> . MAIG
+    (44) OPREL -> . MENIG
+    (45) OPREL -> . IGUAL
+    (46) OPREL -> . DIFER
+
+  ! shift/reduce conflict for OPMULT resolved as shift
+  ! shift/reduce conflict for OPDIV resolved as shift
+  ! shift/reduce conflict for OPAD resolved as shift
+  ! shift/reduce conflict for OPSUB resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MAIOR resolved as shift
+  ! shift/reduce conflict for MAIG resolved as shift
+  ! shift/reduce conflict for MENIG resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DIFER resolved as shift
+    THEN            reduce using rule 34 (expr -> expr OPAD expr .)
+    DO              reduce using rule 34 (expr -> expr OPAD expr .)
+    VIG             reduce using rule 34 (expr -> expr OPAD expr .)
+    FPAR            reduce using rule 34 (expr -> expr OPAD expr .)
+    PVIG            reduce using rule 34 (expr -> expr OPAD expr .)
+    END             reduce using rule 34 (expr -> expr OPAD expr .)
+    ELSE            reduce using rule 34 (expr -> expr OPAD expr .)
+    OPMULT          shift and go to state 46
+    OPDIV           shift and go to state 47
+    OPAD            shift and go to state 48
+    OPSUB           shift and go to state 49
+    MENOR           shift and go to state 51
+    MAIOR           shift and go to state 52
+    MAIG            shift and go to state 53
+    MENIG           shift and go to state 54
+    IGUAL           shift and go to state 55
+    DIFER           shift and go to state 56
+
+  ! OPMULT          [ reduce using rule 34 (expr -> expr OPAD expr .) ]
+  ! OPDIV           [ reduce using rule 34 (expr -> expr OPAD expr .) ]
+  ! OPAD            [ reduce using rule 34 (expr -> expr OPAD expr .) ]
+  ! OPSUB           [ reduce using rule 34 (expr -> expr OPAD expr .) ]
+  ! MENOR           [ reduce using rule 34 (expr -> expr OPAD expr .) ]
+  ! MAIOR           [ reduce using rule 34 (expr -> expr OPAD expr .) ]
+  ! MAIG            [ reduce using rule 34 (expr -> expr OPAD expr .) ]
+  ! MENIG           [ reduce using rule 34 (expr -> expr OPAD expr .) ]
+  ! IGUAL           [ reduce using rule 34 (expr -> expr OPAD expr .) ]
+  ! DIFER           [ reduce using rule 34 (expr -> expr OPAD expr .) ]
+
+    OPREL                          shift and go to state 50
+
+state 74
+
+    (35) expr -> expr OPSUB expr .
+    (32) expr -> expr . OPMULT expr
+    (33) expr -> expr . OPDIV expr
+    (34) expr -> expr . OPAD expr
+    (35) expr -> expr . OPSUB expr
+    (36) expr -> expr . OPREL expr
+    (41) OPREL -> . MENOR
+    (42) OPREL -> . MAIOR
+    (43) OPREL -> . MAIG
+    (44) OPREL -> . MENIG
+    (45) OPREL -> . IGUAL
+    (46) OPREL -> . DIFER
+
+  ! shift/reduce conflict for OPMULT resolved as shift
+  ! shift/reduce conflict for OPDIV resolved as shift
+  ! shift/reduce conflict for OPAD resolved as shift
+  ! shift/reduce conflict for OPSUB resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MAIOR resolved as shift
+  ! shift/reduce conflict for MAIG resolved as shift
+  ! shift/reduce conflict for MENIG resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DIFER resolved as shift
+    THEN            reduce using rule 35 (expr -> expr OPSUB expr .)
+    DO              reduce using rule 35 (expr -> expr OPSUB expr .)
+    VIG             reduce using rule 35 (expr -> expr OPSUB expr .)
+    FPAR            reduce using rule 35 (expr -> expr OPSUB expr .)
+    PVIG            reduce using rule 35 (expr -> expr OPSUB expr .)
+    END             reduce using rule 35 (expr -> expr OPSUB expr .)
+    ELSE            reduce using rule 35 (expr -> expr OPSUB expr .)
+    OPMULT          shift and go to state 46
+    OPDIV           shift and go to state 47
+    OPAD            shift and go to state 48
+    OPSUB           shift and go to state 49
+    MENOR           shift and go to state 51
+    MAIOR           shift and go to state 52
+    MAIG            shift and go to state 53
+    MENIG           shift and go to state 54
+    IGUAL           shift and go to state 55
+    DIFER           shift and go to state 56
+
+  ! OPMULT          [ reduce using rule 35 (expr -> expr OPSUB expr .) ]
+  ! OPDIV           [ reduce using rule 35 (expr -> expr OPSUB expr .) ]
+  ! OPAD            [ reduce using rule 35 (expr -> expr OPSUB expr .) ]
+  ! OPSUB           [ reduce using rule 35 (expr -> expr OPSUB expr .) ]
+  ! MENOR           [ reduce using rule 35 (expr -> expr OPSUB expr .) ]
+  ! MAIOR           [ reduce using rule 35 (expr -> expr OPSUB expr .) ]
+  ! MAIG            [ reduce using rule 35 (expr -> expr OPSUB expr .) ]
+  ! MENIG           [ reduce using rule 35 (expr -> expr OPSUB expr .) ]
+  ! IGUAL           [ reduce using rule 35 (expr -> expr OPSUB expr .) ]
+  ! DIFER           [ reduce using rule 35 (expr -> expr OPSUB expr .) ]
+
+    OPREL                          shift and go to state 50
+
+state 75
+
+    (36) expr -> expr OPREL expr .
+    (32) expr -> expr . OPMULT expr
+    (33) expr -> expr . OPDIV expr
+    (34) expr -> expr . OPAD expr
+    (35) expr -> expr . OPSUB expr
+    (36) expr -> expr . OPREL expr
+    (41) OPREL -> . MENOR
+    (42) OPREL -> . MAIOR
+    (43) OPREL -> . MAIG
+    (44) OPREL -> . MENIG
+    (45) OPREL -> . IGUAL
+    (46) OPREL -> . DIFER
+
+  ! shift/reduce conflict for OPMULT resolved as shift
+  ! shift/reduce conflict for OPDIV resolved as shift
+  ! shift/reduce conflict for OPAD resolved as shift
+  ! shift/reduce conflict for OPSUB resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MAIOR resolved as shift
+  ! shift/reduce conflict for MAIG resolved as shift
+  ! shift/reduce conflict for MENIG resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DIFER resolved as shift
+    THEN            reduce using rule 36 (expr -> expr OPREL expr .)
+    DO              reduce using rule 36 (expr -> expr OPREL expr .)
+    VIG             reduce using rule 36 (expr -> expr OPREL expr .)
+    FPAR            reduce using rule 36 (expr -> expr OPREL expr .)
+    PVIG            reduce using rule 36 (expr -> expr OPREL expr .)
+    END             reduce using rule 36 (expr -> expr OPREL expr .)
+    ELSE            reduce using rule 36 (expr -> expr OPREL expr .)
+    OPMULT          shift and go to state 46
+    OPDIV           shift and go to state 47
+    OPAD            shift and go to state 48
+    OPSUB           shift and go to state 49
+    MENOR           shift and go to state 51
+    MAIOR           shift and go to state 52
+    MAIG            shift and go to state 53
+    MENIG           shift and go to state 54
+    IGUAL           shift and go to state 55
+    DIFER           shift and go to state 56
+
+  ! OPMULT          [ reduce using rule 36 (expr -> expr OPREL expr .) ]
+  ! OPDIV           [ reduce using rule 36 (expr -> expr OPREL expr .) ]
+  ! OPAD            [ reduce using rule 36 (expr -> expr OPREL expr .) ]
+  ! OPSUB           [ reduce using rule 36 (expr -> expr OPREL expr .) ]
+  ! MENOR           [ reduce using rule 36 (expr -> expr OPREL expr .) ]
+  ! MAIOR           [ reduce using rule 36 (expr -> expr OPREL expr .) ]
+  ! MAIG            [ reduce using rule 36 (expr -> expr OPREL expr .) ]
+  ! MENIG           [ reduce using rule 36 (expr -> expr OPREL expr .) ]
+  ! IGUAL           [ reduce using rule 36 (expr -> expr OPREL expr .) ]
+  ! DIFER           [ reduce using rule 36 (expr -> expr OPREL expr .) ]
+
+    OPREL                          shift and go to state 50
+
+state 76
+
+    (31) expr -> OPNEG ABPAR expr . FPAR
+    (32) expr -> expr . OPMULT expr
+    (33) expr -> expr . OPDIV expr
+    (34) expr -> expr . OPAD expr
+    (35) expr -> expr . OPSUB expr
+    (36) expr -> expr . OPREL expr
+    (41) OPREL -> . MENOR
+    (42) OPREL -> . MAIOR
+    (43) OPREL -> . MAIG
+    (44) OPREL -> . MENIG
+    (45) OPREL -> . IGUAL
+    (46) OPREL -> . DIFER
+
+    FPAR            shift and go to state 82
+    OPMULT          shift and go to state 46
+    OPDIV           shift and go to state 47
+    OPAD            shift and go to state 48
+    OPSUB           shift and go to state 49
+    MENOR           shift and go to state 51
+    MAIOR           shift and go to state 52
+    MAIG            shift and go to state 53
+    MENIG           shift and go to state 54
+    IGUAL           shift and go to state 55
+    DIFER           shift and go to state 56
+
+    OPREL                          shift and go to state 50
+
+state 77
+
+    (23) cmdWhile -> WHILE expr DO cmd .
+
+    PVIG            reduce using rule 23 (cmdWhile -> WHILE expr DO cmd .)
+    END             reduce using rule 23 (cmdWhile -> WHILE expr DO cmd .)
+    ELSE            reduce using rule 23 (cmdWhile -> WHILE expr DO cmd .)
+
+
+state 78
+
+    (24) cmdRead -> READ ABPAR listId FPAR .
+
+    PVIG            reduce using rule 24 (cmdRead -> READ ABPAR listId FPAR .)
+    END             reduce using rule 24 (cmdRead -> READ ABPAR listId FPAR .)
+    ELSE            reduce using rule 24 (cmdRead -> READ ABPAR listId FPAR .)
+
+
+state 79
+
+    (25) cmdWrite -> WRITE ABPAR listW FPAR .
+
+    PVIG            reduce using rule 25 (cmdWrite -> WRITE ABPAR listW FPAR .)
+    END             reduce using rule 25 (cmdWrite -> WRITE ABPAR listW FPAR .)
+    ELSE            reduce using rule 25 (cmdWrite -> WRITE ABPAR listW FPAR .)
+
+
+state 80
+
+    (27) listW -> elemW VIG . listW
+    (26) listW -> . elemW
+    (27) listW -> . elemW VIG listW
+    (28) elemW -> . expr
+    (29) elemW -> . CADEIA
+    (31) expr -> . OPNEG ABPAR expr FPAR
+    (32) expr -> . expr OPMULT expr
+    (33) expr -> . expr OPDIV expr
+    (34) expr -> . expr OPAD expr
+    (35) expr -> . expr OPSUB expr
+    (36) expr -> . expr OPREL expr
+    (37) expr -> . OPNEG ID
+    (38) expr -> . OPNEG TRUE
+    (39) expr -> . OPNEG FALSE
+    (40) expr -> . OPNEG OPNEG
+
+    CADEIA          shift and go to state 67
+    OPNEG           shift and go to state 34
+
+    elemW                          shift and go to state 65
+    listW                          shift and go to state 83
+    expr                           shift and go to state 66
+
+state 81
+
+    (22) cmdIf -> IF expr THEN cmd ELSE . cmd
+    (15) cmd -> . cmdIf
+    (16) cmd -> . cmdWhile
+    (17) cmd -> . cmdRead
+    (18) cmd -> . cmdWrite
+    (19) cmd -> . cmdAtrib
+    (20) cmd -> . cmdComp
+    (21) cmdIf -> . IF expr THEN cmd
+    (22) cmdIf -> . IF expr THEN cmd ELSE cmd
+    (23) cmdWhile -> . WHILE expr DO cmd
+    (24) cmdRead -> . READ ABPAR listId FPAR
+    (25) cmdWrite -> . WRITE ABPAR listW FPAR
+    (30) cmdAtrib -> . ID ATRIB expr
+    (12) cmdComp -> . BEGIN listCmd END
+
+    IF              shift and go to state 23
+    WHILE           shift and go to state 24
+    READ            shift and go to state 25
+    WRITE           shift and go to state 26
+    ID              shift and go to state 27
+    BEGIN           shift and go to state 9
+
+    cmd                            shift and go to state 84
+    cmdIf                          shift and go to state 17
+    cmdWhile                       shift and go to state 18
+    cmdRead                        shift and go to state 19
+    cmdWrite                       shift and go to state 20
+    cmdAtrib                       shift and go to state 21
+    cmdComp                        shift and go to state 22
+
+state 82
+
+    (31) expr -> OPNEG ABPAR expr FPAR .
+
+    THEN            reduce using rule 31 (expr -> OPNEG ABPAR expr FPAR .)
+    OPMULT          reduce using rule 31 (expr -> OPNEG ABPAR expr FPAR .)
+    OPDIV           reduce using rule 31 (expr -> OPNEG ABPAR expr FPAR .)
+    OPAD            reduce using rule 31 (expr -> OPNEG ABPAR expr FPAR .)
+    OPSUB           reduce using rule 31 (expr -> OPNEG ABPAR expr FPAR .)
+    MENOR           reduce using rule 31 (expr -> OPNEG ABPAR expr FPAR .)
+    MAIOR           reduce using rule 31 (expr -> OPNEG ABPAR expr FPAR .)
+    MAIG            reduce using rule 31 (expr -> OPNEG ABPAR expr FPAR .)
+    MENIG           reduce using rule 31 (expr -> OPNEG ABPAR expr FPAR .)
+    IGUAL           reduce using rule 31 (expr -> OPNEG ABPAR expr FPAR .)
+    DIFER           reduce using rule 31 (expr -> OPNEG ABPAR expr FPAR .)
+    DO              reduce using rule 31 (expr -> OPNEG ABPAR expr FPAR .)
+    VIG             reduce using rule 31 (expr -> OPNEG ABPAR expr FPAR .)
+    FPAR            reduce using rule 31 (expr -> OPNEG ABPAR expr FPAR .)
+    PVIG            reduce using rule 31 (expr -> OPNEG ABPAR expr FPAR .)
+    END             reduce using rule 31 (expr -> OPNEG ABPAR expr FPAR .)
+    ELSE            reduce using rule 31 (expr -> OPNEG ABPAR expr FPAR .)
+
+
+state 83
+
+    (27) listW -> elemW VIG listW .
+
+    FPAR            reduce using rule 27 (listW -> elemW VIG listW .)
+
+
+state 84
+
+    (22) cmdIf -> IF expr THEN cmd ELSE cmd .
+
+    PVIG            reduce using rule 22 (cmdIf -> IF expr THEN cmd ELSE cmd .)
+    END             reduce using rule 22 (cmdIf -> IF expr THEN cmd ELSE cmd .)
+    ELSE            reduce using rule 22 (cmdIf -> IF expr THEN cmd ELSE cmd .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for ELSE in state 70 resolved as shift
+WARNING: shift/reduce conflict for OPMULT in state 71 resolved as shift
+WARNING: shift/reduce conflict for OPDIV in state 71 resolved as shift
+WARNING: shift/reduce conflict for OPAD in state 71 resolved as shift
+WARNING: shift/reduce conflict for OPSUB in state 71 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 71 resolved as shift
+WARNING: shift/reduce conflict for MAIOR in state 71 resolved as shift
+WARNING: shift/reduce conflict for MAIG in state 71 resolved as shift
+WARNING: shift/reduce conflict for MENIG in state 71 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 71 resolved as shift
+WARNING: shift/reduce conflict for DIFER in state 71 resolved as shift
+WARNING: shift/reduce conflict for OPMULT in state 72 resolved as shift
+WARNING: shift/reduce conflict for OPDIV in state 72 resolved as shift
+WARNING: shift/reduce conflict for OPAD in state 72 resolved as shift
+WARNING: shift/reduce conflict for OPSUB in state 72 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 72 resolved as shift
+WARNING: shift/reduce conflict for MAIOR in state 72 resolved as shift
+WARNING: shift/reduce conflict for MAIG in state 72 resolved as shift
+WARNING: shift/reduce conflict for MENIG in state 72 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 72 resolved as shift
+WARNING: shift/reduce conflict for DIFER in state 72 resolved as shift
+WARNING: shift/reduce conflict for OPMULT in state 73 resolved as shift
+WARNING: shift/reduce conflict for OPDIV in state 73 resolved as shift
+WARNING: shift/reduce conflict for OPAD in state 73 resolved as shift
+WARNING: shift/reduce conflict for OPSUB in state 73 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 73 resolved as shift
+WARNING: shift/reduce conflict for MAIOR in state 73 resolved as shift
+WARNING: shift/reduce conflict for MAIG in state 73 resolved as shift
+WARNING: shift/reduce conflict for MENIG in state 73 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 73 resolved as shift
+WARNING: shift/reduce conflict for DIFER in state 73 resolved as shift
+WARNING: shift/reduce conflict for OPMULT in state 74 resolved as shift
+WARNING: shift/reduce conflict for OPDIV in state 74 resolved as shift
+WARNING: shift/reduce conflict for OPAD in state 74 resolved as shift
+WARNING: shift/reduce conflict for OPSUB in state 74 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 74 resolved as shift
+WARNING: shift/reduce conflict for MAIOR in state 74 resolved as shift
+WARNING: shift/reduce conflict for MAIG in state 74 resolved as shift
+WARNING: shift/reduce conflict for MENIG in state 74 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 74 resolved as shift
+WARNING: shift/reduce conflict for DIFER in state 74 resolved as shift
+WARNING: shift/reduce conflict for OPMULT in state 75 resolved as shift
+WARNING: shift/reduce conflict for OPDIV in state 75 resolved as shift
+WARNING: shift/reduce conflict for OPAD in state 75 resolved as shift
+WARNING: shift/reduce conflict for OPSUB in state 75 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 75 resolved as shift
+WARNING: shift/reduce conflict for MAIOR in state 75 resolved as shift
+WARNING: shift/reduce conflict for MAIG in state 75 resolved as shift
+WARNING: shift/reduce conflict for MENIG in state 75 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 75 resolved as shift
+WARNING: shift/reduce conflict for DIFER in state 75 resolved as shift
